@@ -4,7 +4,7 @@
     <ul class="list-group">
       <li class="list-group-item" v-for="item in items" :key="item.id">
         <div class="container">
-          <FormView></FormView>
+          <FormView :title="item.title" :description="item.description" :subText="item.subText" :url="item.url"></FormView>
         </div>
       </li>
     </ul>
