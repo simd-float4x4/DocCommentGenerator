@@ -13,26 +13,17 @@
 
 <body class="d-flex flex-column h-100">
     <main role="main" class="flex-shrink-0">
-        <div class="container">
-            <h1 class="mt-5">Title</h1>
-            <p class="lead">Description</p>
-            <p>sub-description <a href="">URL</a></p>
-        </div>
+        <noscript>
+          <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+        </noscript>
+        <div id="app"></div>
+        <!-- built files will be auto injected -->
     </main>
-
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-
     <footer class="footer mt-auto py-3">
         <div class="container text-center">
             <span class="text-muted">©︎ Created By Shumpei Horiuchi, 2023</span>
         </div>
     </footer>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script>
         window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
