@@ -5,6 +5,7 @@
       <li class="list-group-item" v-for="item in items" :key="item.id">
         <div class="container" style="white-space: pre-wrap;">
           <FormView :title="item.title" :description="item.description" :subText="item.subText" :url="item.url"></FormView>
+          <input type="text" v-model="addFunction">
         </div>
       </li>
     </ul>
