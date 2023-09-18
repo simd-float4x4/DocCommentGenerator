@@ -1,12 +1,12 @@
 <template>
-    <FooterContainer></FooterContainer>
+    <Footer></Footer>
 </template>
 
 <script>
-import FooterContainer from './components/FooterContainer.vue'
+import Footer from './components/Footer.vue'
 export default {
   components: {
-    FooterContainer
+    Footer
   }
 }
 </script>
