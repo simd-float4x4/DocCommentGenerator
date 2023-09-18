@@ -1,9 +1,7 @@
 <template>
-    <footer class="footer mt-auto py-3">
-        <div class="container text-center">
-            <span class="text-muted">{{ copyRights }}</span>
-        </div>
-    </footer>
+    <div class="container text-center">
+        <span class="text-muted">{{ copyRights }}</span>
+    </div>
 </template>
 
 <script>
