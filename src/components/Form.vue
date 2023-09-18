@@ -1,9 +1,7 @@
 <template>
-    <div class="container">
-        <h1 class="mt-5">{{ Title }}</h1>
-        <p class="lead">{{ Description }}</p>
-        <p>{{ subText }}<a href="">{{ url }}</a></p>
-    </div>
+    <h1 class="mt-5">{{ title }}</h1>
+    <p class="lead">{{ description }}</p>
+    <p>{{ subText }}<a href="">{{ url }}</a></p>
 </template>
 
 <script>
