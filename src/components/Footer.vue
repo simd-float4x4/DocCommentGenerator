@@ -1,5 +1,5 @@
 <template>
-    <div class="container text-center">
+    <div class="container text-center bg-light">
         <span class="text-muted">{{ copyRights }}</span>
     </div>
 </template>
