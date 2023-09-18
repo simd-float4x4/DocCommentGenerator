@@ -1,5 +1,5 @@
 <template>
-    <h1 class="mt-5">{{ title }}</h1>
+    <h3 class="mt-5">{{ title }}</h3>
     <p class="lead">{{ description }}</p>
     <p>{{ subText }}<a href="">{{ url }}</a></p>
 </template>
