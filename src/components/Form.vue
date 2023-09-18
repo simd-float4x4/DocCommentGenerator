@@ -6,13 +6,11 @@
 
 <script>
 export default {
-    data(){ 
-        return {
-            title: "Title",
-            description: "Description",
-            subText: "SubText",
-            url: "URL"
-        }
+    props: { 
+        title: String,
+        description: String,
+        subText: String,
+        url: String
     }
 }
 </script>
