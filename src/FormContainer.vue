@@ -3,36 +3,10 @@
   <div class="container">
     <ul class="list-group">
       <li class="list-group-item" v-for="item in items" :key="item.id">
-        <div class="container" style="white-space: pre-wrap;">
-          <div v-if="item.id ==  1">
-            <FormView :title="item.title" :description="item.description" :subText="item.subText" :url="item.url"></FormView>
-            <div class="input-group">
-              <input type="text" class="form-control" v-model="addFunction" v-on:keydown.enter="onKeyDown">
-            </div>
-          </div>
-          <div v-if="item.id == 2 && item.isShow">
-            <FormView :title="item.title" :description="item.description" :subText="item.subText" :url="item.url" :isShow="item.isShow"></FormView>
-            <div class="input-group">
-              <input type="text" class="form-control" v-model="addDescription">
-            </div>
-          </div>
-          <div v-if="item.id == 3 && item.isShow">
-            <FormView :title="item.title" :description="item.description" :subText="item.subText" :url="item.url" :isShow="item.isShow"></FormView>
-            <div class="input-group">
-              <span class="input-group-text" id="basic-addon3">id</span>
-              <input id="basic-addon3" type="text" class="form-control" v-model="addVariable">
-            </div>
-            <div class="input-group">
-              <span class="input-group-text" id="basic-addon3">name</span>
-              <input id="basic-addon3" type="text" class="form-control" v-model="addVariable">
-            </div>
-          </div>
-          <div v-if="item.id == 4 && item.isShow">
-            <FormView :title="item.title" :description="item.description" :subText="item.subText" :url="item.url" :isShow="item.isShow"></FormView>
-            <div class="input-group">
-              <span class="input-group-text" id="basic-addon3">UserModel</span>
-              <input id="basic-addon3" type="text" class="form-control" v-model="addReturn">
-            </div>
+        <div class="container" style="white-space: pre-wrap;"  v-if="item.isShow">
+          <FormView :title="item.title" :description="item.description" :subText="item.subText" :url="item.url" :isShow="item.isShow"></FormView>
+          <div class="input-group">
+            <input type="text" class="form-control" v-model="item.inputValue" v-on:keydown.enter="onKeyDown">
           </div>
         </div>
       </li>
