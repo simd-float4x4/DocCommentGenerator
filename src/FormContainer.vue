@@ -6,10 +6,13 @@
         <div class="container" style="white-space: pre-wrap;"  v-if="item.isShow">
           <FormView :title="item.title" :description="item.description" :subText="item.subText" :url="item.url" :isShow="item.isShow"></FormView>
           <div class="input-group">
-            <div v-if="item.id == 1" class="text-danger">
-              <p v-if="returnNil == true">
+            <div v-if="item.id == 1" class="text-danger w-100">
+              <p>
                 メソッドを入力してください。<br>
               </p>
+              <input type="text" class="form-control" v-model="item.inputValue" v-on:keydown.enter="onKeyDown()">
+            </div>
+            <div v-if="item.id != 1" class="w-100">
               <input type="text" class="form-control" v-model="item.inputValue" v-on:keydown.enter="onKeyDown()">
             </div>
           </div>
@@ -36,20 +39,16 @@ export default {
         { id: 3, title: "3. CHECK YOUR VARIABLE HERE", description: "生成された引数の一覧が正しいか確認してください。", subText: "なお、+ボタン -ボタンで要素の数を調整できます。", url: null, isShow: false },
         { id: 4, title: "4. CHECK YOUR RETURN VALUE", description: "帰り値/戻り値/リターン値が存在していることを確認してください。", subText: "例）　return WeatherModel 　// 帰り値が必要", url: null, isShow: false },
       ],
-      message: '',
+      isNull: false,
     };
   },
   methods: {
-    returnNil() {
-      return true;
-    },
     onKeyDown() {
       const value = this.items[0].inputValue;
       if (!value) {
         this.items.forEach((item) => {
           if ( item.id != 1 ) { item.isShow = false; }
         });
-        this.returnNil();
       } else {
         this.items.forEach((item) => {
           if ( item.id != 1 ) { item.isShow = true; }
