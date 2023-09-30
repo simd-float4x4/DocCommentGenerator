@@ -6,7 +6,12 @@
         <div class="container" style="white-space: pre-wrap;"  v-if="item.isShow">
           <FormView :title="item.title" :description="item.description" :subText="item.subText" :url="item.url" :isShow="item.isShow"></FormView>
           <div class="input-group">
-            <input type="text" class="form-control" v-model="item.inputValue" v-on:keydown.enter="onKeyDown">
+            <div v-if="item.id == 1" class="text-danger">
+              <p v-if="returnNil == true">
+                メソッドを入力してください。<br>
+              </p>
+              <input type="text" class="form-control" v-model="item.inputValue" v-on:keydown.enter="onKeyDown()">
+            </div>
           </div>
         </div>
       </li>
@@ -26,7 +31,7 @@ export default {
   data() {
     return {
       items: [
-        { id: 1, title: "1. INPUT YOUR CODE HERE", description: "メソッドの1行目を入力してください。\n※ なお、Opening Bracketsまで必ず含めてください。", subText: "例) func fetchUserData(id: Int, name: String) -> UserModel { ", url: null, isShow: true },
+        { id: 1, title: "1. INPUT YOUR CODE HERE", description: "メソッドの1行目を入力してください。\n※ なお、Opening Bracketsまで必ず含めてください。", subText: "例) func fetchUserData(id: Int, name: String) -> UserModel ", url: null, isShow: true },
         { id: 2, title: "2. INPUT YOUR DESCRIPTION HERE", description: "このメソッドはどんなメソッドですか？", subText: "例) 引数の値でResponse構造体を作成する。引数がnilの場合はランダムに値を作成する。", url: null, isShow: false },
         { id: 3, title: "3. CHECK YOUR VARIABLE HERE", description: "生成された引数の一覧が正しいか確認してください。", subText: "なお、+ボタン -ボタンで要素の数を調整できます。", url: null, isShow: false },
         { id: 4, title: "4. CHECK YOUR RETURN VALUE", description: "帰り値/戻り値/リターン値が存在していることを確認してください。", subText: "例）　return WeatherModel 　// 帰り値が必要", url: null, isShow: false },
@@ -35,12 +40,23 @@ export default {
     };
   },
   methods: {
+    returnNil() {
+      return true;
+    },
     onKeyDown() {
-      console.log('pressed');
-      this.items.forEach((item) => {
-        item.isShow = true;
-      });
-    }
+      const value = this.items[0].inputValue;
+      if (!value) {
+        this.items.forEach((item) => {
+          if ( item.id != 1 ) { item.isShow = false; }
+        });
+        this.returnNil();
+      } else {
+        this.items.forEach((item) => {
+          if ( item.id != 1 ) { item.isShow = true; }
+        });
+      }
+    },
   },
 };
+
 </script>
