@@ -10,7 +10,8 @@ export default {
         title: String,
         description: String,
         subText: String,
-        url: String
+        url: String,
+        isShow: Boolean
     }
 }
 </script>
