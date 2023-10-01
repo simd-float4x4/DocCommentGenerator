@@ -8,7 +8,7 @@
           <div class="input-group">
             <div class="text-danger w-100">
               <div v-if="item.id == 1" class="w-100">
-                <textarea type="text" class="form-control" v-model="item.inputValue" v-on:keydown.enter="onKeyDown()"></textarea>
+                <input type="text" class="form-control" v-model="item.inputValue" v-on:keydown.enter="onKeyDown()">
               </div>
               <div v-if="item.id == 2" class="w-100">
                 <textarea type="text" class="form-control" v-model="item.inputValue"></textarea>
@@ -70,13 +70,53 @@ export default {
       }
     },
     checkMethod(baseMethod) {
+      // funcの削除
       var method = baseMethod.replace(/func/g, '');
+      // スペースの削除
       if (method.startsWith(' ')) {
         method = method.trimLeft();
       }
-      var brackets = '(';
-      methodName = method.substr(0, method.indexOf('('));
-      console.log(methodName);
+      // 関数名の取得
+      var brackets = '\(';
+      var endBrackets = '\)';
+      var index = '\:';
+      var comma = '\,';
+      methodName = method.substr(0, method.indexOf(brackets));
+
+      // 引数の取得
+      var methodAfter = method.substr(method.indexOf(brackets) + 1);
+      method = methodAfter;
+      console.log("methodAfter: ", method);
+      
+      var after = method.substr(method.indexOf(endBrackets));
+      method = method.replace(after, "");
+      console.log("after: ", method);
+
+      const array = [];
+      var count = ( method.match(/\:/g) || [] ).length;
+      console.log("count: ", count);
+      for (var i = 0; i < count; i++) {
+        var _variable = method.substr(0, method.indexOf(index));
+        console.log("_variable: ", _variable);
+        let str = _variable + ":"
+        method = method.replace(str, "");
+
+        var _comma = method.substr(0, method.indexOf(comma) + 1);
+        method = method.replace(_comma, "");
+        console.log("_comma: ", _comma);
+          // スペースの削除
+          if (method.startsWith(' ')) {
+            method = method.trimLeft();
+          }
+        array.push(_variable);
+      }
+      console.log("array: ", array);
+
+      var methodEnd = methodAfter.substr(0, method.indexOf(endBrackets));
+      // console.log("methodEnd: ", methodEnd);
+      if (methodAfter.startsWith(' ')) {
+        methodAfter = methodAfter.trimLeft();
+      }
     }
   },
 };
