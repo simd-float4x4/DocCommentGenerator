@@ -34,6 +34,9 @@
 import TitleText from './components/Title-text.vue'
 import FormView from './components/Form-view.vue'
 
+var inputMethod = '';
+var methodName = '';
+
 export default {
   components: {
     TitleText,
@@ -51,6 +54,7 @@ export default {
     };
   },
   methods: {
+    // 1つ目の要素のnilチェック
     onKeyDown() {
       const value = this.items[0].inputValue;
       if (!value) {
@@ -60,9 +64,20 @@ export default {
       } else {
         this.items.forEach((item) => {
           if ( item.id != 1 ) { item.isShow = true; }
+          inputMethod = value;
+          this.checkMethod(inputMethod);
         });
       }
     },
+    checkMethod(baseMethod) {
+      var method = baseMethod.replace(/func/g, '');
+      if (method.startsWith(' ')) {
+        method = method.trimLeft();
+      }
+      var brackets = '(';
+      methodName = method.substr(0, method.indexOf('('));
+      console.log(methodName);
+    }
   },
 };
 
